@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+cd ..
+cd jade-go-server
+make docker
+cd ../jade-to-user
+make docker
+cd ../jade-go-bot
+make docker
+cd ../jade-go
