@@ -2,7 +2,8 @@
 cd ..
 cd jade-go-server
 make docker
-cd ../jade-to-user
+cd ../jade-go-user
+make build
 make docker
 cd ../jade-go-bot
 make docker
