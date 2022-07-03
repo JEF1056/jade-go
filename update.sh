@@ -28,15 +28,15 @@ source ~/.bashrc
 if test -z "$commit_message"; then
     echo "Skipping commit"
 else
-    git submodule foreach git add -A
-    git submodule foreach git commit -m "$commit_message"
-    git submodule foreach git push
+    git submodule --quiet foreach git add -A
+    git submodule --quiet foreach git commit -m "$commit_message"
+    git submodule --quiet foreach git push
     git add .
     git commit -m "$commit_message"
     git push
 fi
 
-git submodule update --recursive
+git submodule --quiet update --recursive
 
 for i in "${go_projects[@]}"
 do
@@ -50,9 +50,9 @@ done
 if test -z "$commit_message"; then
     echo "Skipping commit"
 else
-    git submodule foreach git add -A
-    git submodule foreach git commit -m "$commit_message"
-    git submodule foreach git push
+    git submodule --quiet foreach git add -A
+    git submodule --quiet foreach git commit -m "$commit_message"
+    git submodule --quiet foreach git push
     git add .
     git commit -m "$commit_message"
     git push
