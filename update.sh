@@ -31,8 +31,8 @@ else
     git submodule --quiet foreach git add -A
     git submodule --quiet foreach git commit -m "$commit_message"
     git submodule --quiet foreach git push
-    git add --quiet .
-    git commit --quiet -m "$commit_message"
+    git add .
+    git commit -m "$commit_message"
     git push
 fi
 
