@@ -1,27 +1,24 @@
 #!/usr/bin/env bash
 
-while getopts 'lha:' OPTION; do
+while getopts 'uc:' OPTION; do
   case "$OPTION" in
     u)
-      update="true"
+      sudo apt update
+      sudo apt upgrade -y
+      sudo apt install -y direnv
       ;;
-    a)
+    c)
       commit_message="$OPTARG"
       echo "The value provided is $OPTARG"
       ;;
     ?)
-      echo "script usage: $(basename \$0) [-l] [-h] [-a somevalue]" >&2
+      echo "script usage: $(basename \$0) [-u] [-c commit_message]" >&2
       exit 1
       ;;
   esac
 done
 shift "$(($OPTIND -1))"
 
-if [ "$update" = 'true' ]; then
-    sudo apt update
-    sudo apt upgrade -y
-    sudo apt install -y direnv
-fi
 grep -qxF 'eval "$(direnv hook bash)"' ~/.bashrc || echo 'eval "$(direnv hook bash)"' >> ~/.bashrc
 
 source ~/.bashrc
