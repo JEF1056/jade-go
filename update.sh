@@ -28,7 +28,7 @@ source ~/.bashrc
 if test -z "$commit_message"; then
     echo "Skipping commit"
 else
-    git submodule --quiet foreach git add -A
+    git submodule --quiet foreach git add .
     git submodule --quiet foreach git commit -m "$commit_message"
     git submodule --quiet foreach git push
     git add .
@@ -50,7 +50,7 @@ done
 if test -z "$commit_message"; then
     echo "Skipping commit"
 else
-    git submodule --quiet foreach git add -A
+    git submodule --quiet foreach git add .
     git submodule --quiet foreach git commit -m "$commit_message"
     git submodule --quiet foreach git push
     git add .
