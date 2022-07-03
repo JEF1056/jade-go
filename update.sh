@@ -37,6 +37,7 @@ else
 fi
 
 git submodule update --recursive
+
 for i in "${go_projects[@]}"
 do
    : 
@@ -45,6 +46,17 @@ do
     go get -u
     cd ..
 done
+
+if test -z "$commit_message"; then
+    echo "Skipping commit"
+else
+    git submodule foreach git add -A
+    git submodule foreach git commit -m "$commit_message"
+    git submodule foreach git push
+    git add .
+    git commit -m "$commit_message"
+    git push
+fi
 
 cp docker/.envrc .envrc
 cp -r docker/.vscode .vscode
