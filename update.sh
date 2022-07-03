@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+go_projects=( "jade-go-bot" "jade-go-server" "jade-go-shared" )
+
 while getopts 'uc:' OPTION; do
   case "$OPTION" in
     u)
@@ -35,9 +37,14 @@ else
 fi
 
 git submodule update --recursive
-
-git submodule foreach go mod tidy
-git submodule foreach go get -u
+for i in "${go_projects[@]}"
+do
+   : 
+    cd $i
+    go mod tidy
+    go get -u
+    cd ..
+done
 
 cp docker/.envrc .envrc
 cp -r docker/.vscode .vscode
