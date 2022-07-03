@@ -36,6 +36,9 @@ fi
 
 git submodule update --recursive
 
+git submodule foreach go mod tidy
+git submodule foreach go get -u
+
 cp docker/.envrc .envrc
 cp -r docker/.vscode .vscode
 cp docker/docker-compose.yml docker-compose.yml
