@@ -31,7 +31,7 @@ if test -z "$commit_message"; then
     echo "Skipping commit"
 else
     git submodule --quiet foreach git add --all
-    git submodule --quiet foreach 'git commit -m "$commit_message" || :'
+    git submodule --quiet foreach "git commit -m \"${commit_message}\" || :"
     git submodule --quiet foreach git push
     git add --all
     git commit -m "$commit_message"
@@ -53,7 +53,7 @@ if test -z "$commit_message"; then
     echo "Skipping commit"
 else
     git submodule --quiet foreach git add --all
-    git submodule --quiet foreach 'git commit -m "$commit_message" || :'
+    git submodule --quiet foreach "git commit -m \"${commit_message}\" || :"
     git submodule --quiet foreach git push
     git add -A
     git commit -m "$commit_message"
