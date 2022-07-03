@@ -1,0 +1,18 @@
+[submodule "jade-go-shared"]
+	path = jade-go-shared
+	url = https://github.com/JEF1056/jade-go-shared
+[submodule "jade-go-server"]
+	path = jade-go-server
+	url = https://github.com/JEF1056/jade-go-server
+[submodule "jade-go-user"]
+	path = jade-go-user
+	url = https://github.com/JEF1056/jade-go-client.git
+	branch = user
+[submodule "jade-go-bot"]
+	path = jade-go-bot
+	url = https://github.com/JEF1056/jade-go-client.git
+	branch = bot
+[submodule "docker"]
+	path = docker
+	url = https://github.com/JEF1056/jade-go-shared
+	branch = docker
