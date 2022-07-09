@@ -1,0 +1,20 @@
+{
+	"folders": [
+        {
+            "path": "."
+        },
+        {
+            "path": "../jade-go-bot"
+        },
+        {
+            "path": "../jade-go-server"
+        },
+        {
+            "path": "../jade-go-shared"
+        },
+        {
+            "path": "../jade-go-user"
+        }
+    ],
+    "settings": {}
+}

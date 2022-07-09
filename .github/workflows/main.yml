@@ -17,9 +17,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          repository: 'JEF1056/jade-go-client'
+          repository: 'JEF1056/jade-go-user'
           token: ${{ secrets.PAT }}
-          ref: user
       - name: Unzip model
         run: tar -xzf model.tar.gz
       - name: Build code
@@ -46,9 +45,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          repository: 'JEF1056/jade-go-client'
+          repository: 'JEF1056/jade-go-user'
           token: ${{ secrets.PAT }}
-          ref: user
       - name: Unzip model
         run: tar -xzf model.tar.gz
       - name: Build code
@@ -75,9 +73,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          repository: 'JEF1056/jade-go-client'
+          repository: 'JEF1056/jade-go-user'
           token: ${{ secrets.PAT }}
-          ref: user
       - name: Unzip model
         run: tar -xzf model.tar.gz
       - name: Install dependencies
