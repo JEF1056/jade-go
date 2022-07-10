@@ -2,8 +2,9 @@
 
 install_gpu="false"
 install_docker="false"
+env="dev"
 
-while getopts 'gd' OPTION; do
+while getopts 'gdp' OPTION; do
   case "$OPTION" in
     g)
         install_gpu="true"
@@ -12,6 +13,10 @@ while getopts 'gd' OPTION; do
     d) 
         install_docker="true"
         echo "Running script with docker setup"
+        ;;
+    p) 
+        env="prod"
+        echo "Setting up Prod enviornment"
         ;;
     ?)
       echo "script usage: $(basename \$0) [-g] (install with gpu support) [-d] (install with docker)" >&2
@@ -32,7 +37,9 @@ cd ${HOME}
 wget https://go.dev/dl/go1.18.3.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go
 sudo tar -C /usr/local -xzf go1.18.3.linux-amd64.tar.gz
-grep -qxF 'PATH=$PATH:/usr/local/go/bin' ~/.bashrc || echo 'PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
+grep -qxF 'export PATH=$PATH:/usr/local/go/bin' ~/.bashrc || echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
+grep -qxF 'export GOPRIVATE=github.com/JEF1056/*' ~/.bashrc || echo 'export GOPRIVATE=github.com/JEF1056/*' >> ~/.bashrc
+grep -qxF "export ENV=${env}" ~/.bashrc || echo "export ENV=${env}" >> ~/.bashrc
 source ~/.bashrc
 go version
 rm go1.18.3.linux-amd64.tar.gz
@@ -51,6 +58,9 @@ done
 if $install_docker == "true"; then
     curl https://get.docker.com | sh 
     sudo systemctl --now enable docker
+
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
 fi
 
 if $install_gpu == "true"; then
