@@ -40,6 +40,11 @@ sudo tar -C /usr/local -xzf go1.18.3.linux-amd64.tar.gz
 grep -qxF 'export PATH=$PATH:/usr/local/go/bin' ~/.bashrc || echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
 grep -qxF 'export GOPRIVATE=github.com/JEF1056/*' ~/.bashrc || echo 'export GOPRIVATE=github.com/JEF1056/*' >> ~/.bashrc
 grep -qxF "export ENV=${env}" ~/.bashrc || echo "export ENV=${env}" >> ~/.bashrc
+if $env = "prod"; then
+    grep -qxF "export WAIT=" ~/.bashrc || echo "export WAIT=" >> ~/.bashrc
+else
+    grep -qxF "export WAIT=./" ~/.bashrc || echo "export WAIT=./" >> ~/.bashrc
+fi
 source ~/.bashrc
 go version
 rm go1.18.3.linux-amd64.tar.gz
