@@ -14,7 +14,7 @@ while getopts 'gd' OPTION; do
         echo "Running script with docker setup"
         ;;
     ?)
-      echo "script usage: $(basename \$0) [-u] [-c commit_message]" >&2
+      echo "script usage: $(basename \$0) [-g] (install with gpu support) [-d] (install with docker)" >&2
       exit 1
       ;;
   esac
