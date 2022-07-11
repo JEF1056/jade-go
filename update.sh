@@ -28,4 +28,10 @@ do
     cd -
 done
 
+
+cd jade-go
+git add .
+git commit -m "${commit_message}"
+git push
+cd -
 cd -

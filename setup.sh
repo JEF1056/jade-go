@@ -56,7 +56,12 @@ do
    : 
     git clone https://github.com/JEF1056/jade-go-${project}.git jade-go-${project}
     cd jade-go-${project}
-    git submodule update --init
+    if project != "shared"
+        git submodule update --init --recursive
+        cd shared
+        git checkout docker
+        cd -
+    fi
     cd -
 done
 
